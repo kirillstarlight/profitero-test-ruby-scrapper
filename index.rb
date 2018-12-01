@@ -9,7 +9,8 @@ links = page.xpath("//a[@class='product_img_link product-list-category-img']")
 result = links.map do |link| 
     itemPage = agent.click(link)
     name = itemPage.xpath("//h1[@class='product_main_name']").text
-    price = itemPage.xpath("//div[@class='attribute_list']")
-    image = itemPage.xpath("//img[@id='bigpic']")
-    puts(name, price, image,"=====================")
+    nameCategory = itemPage.xpath("//span[@class='radio_label']").text
+    price = itemPage.xpath("//span[@class='price_comb']").text
+    image = itemPage.xpath("//img[@id='bigpic']").attr('src')
+    puts(name,nameCategory, price, image,"=====================")
 end
